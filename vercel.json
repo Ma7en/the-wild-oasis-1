@@ -1,0 +1,10 @@
+{
+    "routes": [
+        {
+            "src": "/bookings/.*",
+            "dest": "/bookings/index.html",
+            "headers": { "cache-control": "public,max-age=0,must-revalidate" },
+            "continue": true
+        }
+    ]
+}

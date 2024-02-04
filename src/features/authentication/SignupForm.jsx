@@ -31,85 +31,86 @@ function SignupForm({ sign }) {
     }
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <FormRow label="Full name" error={errors?.fullName?.message}>
-                <Input
-                    type="text"
-                    id="fullName"
-                    disabled={isLoading}
-                    {...register("fullName", {
-                        required: `This field is required`,
-                    })}
-                />
-            </FormRow>
-
-            <FormRow label="Email address" error={errors?.email?.message}>
-                <Input
-                    type="email"
-                    id="email"
-                    disabled={isLoading}
-                    {...register("email", {
-                        required: `This field is required`,
-                        pattern: {
-                            value: /\S+@\S+\.\S+/,
-                            message: `Please Provide a valid email address`,
-                        },
-                    })}
-                />
-            </FormRow>
-
-            <FormRowPass
-                label="Password (min 8 characters)"
-                error={errors?.password?.message}
-                sign={sign}
-            >
-                <>
+        <>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+                <FormRow label="Full name" error={errors?.fullName?.message}>
                     <Input
-                        type={!showPassword ? "password" : "text"}
-                        id="password"
+                        type="text"
+                        id="fullName"
                         disabled={isLoading}
-                        {...register("password", {
+                        {...register("fullName", {
                             required: `This field is required`,
-                            minLength: {
-                                value: 8,
-                                message: `Password needs a minimum of 8 characters`,
+                        })}
+                    />
+                </FormRow>
+
+                <FormRow label="Email address" error={errors?.email?.message}>
+                    <Input
+                        type="email"
+                        id="email"
+                        disabled={isLoading}
+                        {...register("email", {
+                            required: `This field is required`,
+                            pattern: {
+                                value: /\S+@\S+\.\S+/,
+                                message: `Please Provide a valid email address`,
                             },
                         })}
                     />
-                    {!showPassword ? (
-                        <HiEye
-                            onClick={() => setShowPassword((show) => !show)}
-                        />
-                    ) : (
-                        <HiEyeSlash
-                            onClick={() => setShowPassword((show) => !show)}
-                        />
-                    )}
-                </>
-            </FormRowPass>
+                </FormRow>
 
-            <FormRowPass
-                label="Repeat password"
-                error={errors?.passwordConfirm?.message}
-                sign={sign}
-            >
-                <>
-                    <Input
-                        type={!showPassword ? "password" : "text"}
-                        id="passwordConfirm"
-                        disabled={isLoading}
-                        {...register("passwordConfirm", {
-                            required: `This field is required`,
-                            minLength: {
-                                value: 8,
-                                message: `Password needs a minimum of 8 characters`,
-                            },
-                            validate: (value) =>
-                                value === getValues().password ||
-                                `Passwords need to match`,
-                        })}
-                    />
-                    {/* {!showPassword ? (
+                <FormRowPass
+                    label="Password (min 8 characters)"
+                    error={errors?.password?.message}
+                    sign={sign}
+                >
+                    <>
+                        <Input
+                            type={!showPassword ? "password" : "text"}
+                            id="password"
+                            disabled={isLoading}
+                            {...register("password", {
+                                required: `This field is required`,
+                                minLength: {
+                                    value: 8,
+                                    message: `Password needs a minimum of 8 characters`,
+                                },
+                            })}
+                        />
+                        {!showPassword ? (
+                            <HiEye
+                                onClick={() => setShowPassword((show) => !show)}
+                            />
+                        ) : (
+                            <HiEyeSlash
+                                onClick={() => setShowPassword((show) => !show)}
+                            />
+                        )}
+                    </>
+                </FormRowPass>
+
+                <FormRowPass
+                    label="Repeat password"
+                    error={errors?.passwordConfirm?.message}
+                    sign={sign}
+                >
+                    <>
+                        <Input
+                            type={!showPassword ? "password" : "text"}
+                            id="passwordConfirm"
+                            disabled={isLoading}
+                            {...register("passwordConfirm", {
+                                required: `This field is required`,
+                                minLength: {
+                                    value: 8,
+                                    message: `Password needs a minimum of 8 characters`,
+                                },
+                                validate: (value) =>
+                                    value === getValues().password ||
+                                    `Passwords need to match`,
+                            })}
+                        />
+                        {/* {!showPassword ? (
                         <HiEye
                             onClick={() => setShowPassword((show) => !show)}
                         />
@@ -118,22 +119,23 @@ function SignupForm({ sign }) {
                             onClick={() => setShowPassword((show) => !show)}
                         />
                     )} */}
-                </>
-            </FormRowPass>
+                    </>
+                </FormRowPass>
 
-            <FormRow>
-                {/* type is an HTML attribute! */}
-                <Button
-                    variation="secondary"
-                    type="reset"
-                    disabled={isLoading}
-                    onClick={reset}
-                >
-                    Cancel
-                </Button>
-                <Button disabled={isLoading}>Create new user</Button>
-            </FormRow>
-        </Form>
+                <FormRow>
+                    {/* type is an HTML attribute! */}
+                    <Button
+                        variation="secondary"
+                        type="reset"
+                        disabled={isLoading}
+                        onClick={reset}
+                    >
+                        Cancel
+                    </Button>
+                    <Button disabled={isLoading}>Create new user</Button>
+                </FormRow>
+            </Form>
+        </>
     );
 }
 

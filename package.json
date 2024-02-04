@@ -13,6 +13,7 @@
     "dependencies": {
         "@tanstack/react-query": "^5.14.6",
         "@tanstack/react-query-devtools": "^5.14.6",
+        "@vercel/analytics": "^1.1.2",
         "date-fns": "^3.0.6",
         "json-server": "^0.17.4",
         "quotesy": "^1.0.10",

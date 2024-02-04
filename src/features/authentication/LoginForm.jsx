@@ -20,7 +20,7 @@ function LoginForm({ sign }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { login, isLoading } = useLogin();
-    const { register, formState } = useForm();
+    const { register, formState, reset } = useForm();
     const { errors } = formState;
     const [showPassword, setShowPassword] = useState(false);
 
